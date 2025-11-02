@@ -1,51 +1,48 @@
-## 🌟 Multi-Topic Quiz App
-A GUI-based quiz application built using **Python & Tkinter**. The app presents random quiz questions from multiple categories like Geography, Technology, Business, and more. It includes a **dark mode toggle**, a **timer**, score tracking, correct answer feedback, and the option to **restart the quiz**.
+🧠 Python Exam Portal (Modern GUI)
 
-### 🎯 Features
-✅ 25+ Curated Questions  
-🧠 Randomized Order  
-⏱️ 30-sec Timer per Question  
-🌙 Light/Dark Mode Toggle  
-🎯 Score Display & Percentage  
-❌ Shows Correct Answer if Wrong  
-🔁 Restart Quiz Option on Result  
-🎨 Clean UI with Centered Layout
+A modern Exam Portal Application built using Python + Tkinter, inspired by platforms like HackerRank and TCS iON.
+It provides a realistic test environment for Aptitude, Reasoning, and Programming assessments with real-time code execution and timer functionality.
 
-### 📁 Technologies Used
-- **Python 3.x**
-- **Tkinter** – GUI Library
-### 🚀 How to Run
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/Kalyanch20/quiz-app.git
-   cd quiz-app
-   ```
-2. Run the app:
-   ```bash
-   python quiz_app.py
-   ```
-> ✅ Make sure Python is installed. No other dependencies needed.
+🚀 FEATURES
+50+ MCQs (Aptitude, Reasoning & Programming)
 
-### 🧠 Categories Covered
-🌍 Geography  
-☀️ Health & Science  
-🌐 Technology  
-💰 Finance  
-🛒 Business
+5 Python Coding Challenges (Easy to Hard)
 
-### 📌 Future Enhancements
-🎵 Sound effects (correct/wrong)  
-🏆 Leaderboard using SQLite  
-📊 Graphical score summary  
-🔄 Category filter toggle
+Real-Time Code Execution using subprocess
 
-### 📃 License
-This project is licensed under the MIT License. Feel free to use, share, and improve!
+60-Minute Countdown Timer
 
-### 🤝 Contributing
-Contributions, bug reports, and ideas are welcome! Feel free to open a Pull Request or Issue.
+Navigation Controls: Next, Previous, Submit
 
-### 👤 Author
-**Kalyan CH**  
-🖥️ Built with Tkinter using Python, GUI  
-📧 Reach me via LinkedIn / GitHub
+Dark / Light Theme Toggle
+
+Result Analysis & Score Summary
+
+Offline App (No Internet Required)
+
+🧠 TECH STACK
+Language: Python 3.10+
+Libraries: Tkinter, Subprocess, Random, Time, Font, Messagebox
+Platform: Windows (works on macOS/Linux too)
+
+📦 INSTALLATION & RUN
+Clone the repository
+git clone https://github.com/<your-username>/exam-portal.git
+cd exam-portal
+
+Run the app
+💡 ABOUT THE PROJECT
+This project replicates a real online assessment system where users can answer MCQs, attempt coding questions, and get evaluated instantly.
+It helped me learn about GUI design, time management systems, question randomization, and safe code execution using Python.
+
+🎯 GOAL
+To create an offline practice platform that offers the same experience as professional online exam systems like HackerRank or TCS iON.
+
+🏷️ TAGS
+#Python #Tkinter #ExamPortal #CodingPlatform #GUI #HackerrankClone #SoftwareProject #LearningByBuilding
+
+👑 DEVELOPED BY
+Kalyan Chakravadhanula
+
+python exam_portal.py
+
