@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kalyan Chakravadhanula — Portfolio</title>
+  <meta name="description" content="Kalyan Chakravadhanula | Aspiring Software Engineer. Projects: PyAssess, MCQ Quiz App. GitHub, LinkedIn, LeetCode."/>
+  <style>
+    :root{
+      --bg:#06030b;
+      --muted:#9aa3a9;
+      --accent:#9b7bff;     /* purple neon */
+      --accent-2:#6be0ff;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(900px 600px at 12% 12%, rgba(155,123,255,0.03), transparent),
+        linear-gradient(180deg,#040205 0%, #09030b 100%);
+      color:#eef7ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      scroll-behavior:smooth;
+      padding-bottom:60px;
+    }
+    .wrap {max-width:var(--maxw); margin:28px auto; padding:0 20px;}
+
+    /* header */
+    header{
+      position:sticky; top:18px; z-index:90;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 16px; border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
+      margin-bottom:18px;
+    }
+    .brand{display:flex; gap:12px; align-items:center;}
+    .logo {
+      width:52px;height:52px;border-radius:12px;
+      display:grid;place-items:center;font-weight:800;color:var(--accent);
+      background:linear-gradient(135deg,#2a0a3d,#3b1150);
+      box-shadow:0 10px 30px rgba(155,123,255,0.06);
+      border:1px solid rgba(155,123,255,0.06);
+      font-family: Inter, sans-serif;
+    }
+    .brand-title{line-height:1}
+    .brand-title .name {font-weight:800; font-size:15px; color:#f5f8ff}
+    .brand-title .role {font-size:12px; color:var(--muted)}
+
+    nav{display:flex; gap:12px; align-items:center;}
+    nav a{color:var(--muted); text-decoration:none; font-weight:700; padding:8px 12px; border-radius:8px; font-size:13px;}
+    nav a:hover{color:var(--accent); background:rgba(155,123,255,0.03)}
+
+    /* hero */
+    .hero{
+      display:flex; gap:28px; align-items:center; justify-content:space-between;
+      padding:30px; border-radius:16px; overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.03);
+      position:relative;
+    }
+    #particle-canvas { position:absolute; inset:0; z-index:0; opacity:0.14; filter:blur(6px); }
+    .hero-left{z-index:2; flex:1 1 60%}
+    .kicker{display:inline-block;background:rgba(255,255,255,0.02);color:var(--muted);padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+    .hero h1{font-size:34px;margin:12px 0 6px; color:#f6f8ff; line-height:1.02}
+    .hero h1 strong{color:var(--accent)}
+    .hero-sub {font-size:15px;color:var(--muted);max-width:70ch}
+    .typing {color:var(--accent-2); font-weight:800; margin-left:6px}
+
+    .hero-cta{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; z-index:2}
+    .btn {
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px;
+      background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04); font-weight:800; text-decoration:none;
+    }
+    .btn.btn-primary{background:linear-gradient(90deg, rgba(155,123,255,0.06), rgba(107,224,255,0.02)); color:var(--accent); border:1px solid rgba(155,123,255,0.12)}
+    .btn:hover{transform:translateY(-4px); transition:all .18s ease}
+
+    /* profile card */
+    .profile-card{z-index:2;width:320px; max-width:36%; padding:16px; border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.03);
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .avatar{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,#2a0a3d,#3b1150); display:grid;place-items:center; color:var(--accent); font-weight:900; font-size:20px}
+    .profile-name{font-weight:800}
+    .profile-role{font-size:13px;color:var(--muted)}
+    .socials{display:flex; gap:10px; margin-top:8px}
+    .socials a{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.01); color:var(--muted); text-decoration:none; font-weight:700; font-size:13px}
+    .socials a:hover{color:var(--accent)}
+
+    /* sections */
+    .block{margin-top:20px;padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.02); background:linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.01))}
+    .section-title{font-size:18px;color:var(--accent);font-weight:800;margin-bottom:12px}
+    .muted{color:var(--muted)}
+
+    .grid-2{display:grid; grid-template-columns:1fr 360px; gap:20px; align-items:start}
+    @media(max-width:980px){ .grid-2{grid-template-columns:1fr} .profile-card{max-width:100%} .hero{flex-direction:column;align-items:flex-start} }
+
+    /* skills */
+    .skills-grid{display:flex;flex-wrap:wrap; gap:10px}
+    .skill {padding:8px 12px; border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)); color:var(--muted); font-weight:700; border:1px solid rgba(255,255,255,0.02)}
+
+    .proficiency{margin-top:10px}
+    .pro-item{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .pro-item .label{width:140px;color:var(--muted);font-weight:700}
+    .pro-bar{flex:1;height:12px;background:rgba(255,255,255,0.02);border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,0.02)}
+    .pro-bar > i{display:block;height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); width:10%}
+
+    /* projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .proj-card{padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02); background:linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.01))}
+    .proj-card h3{color:var(--accent); margin-bottom:6px}
+    .proj-card p{color:var(--muted); font-size:14px}
+    .proj-meta{margin-top:10px; font-weight:700; color:var(--muted); font-size:13px}
+
+    /* certs */
+    .certs-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px}
+    .cert{padding:12px;border-radius:10px;border-left:4px solid var(--accent); background:rgba(255,255,255,0.01); color:var(--muted); font-weight:700}
+
+    /* contact */
+    .contact-row{display:flex; gap:12px; flex-wrap:wrap}
+    .contact-card{padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02); background:linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.01)); min-width:200px}
+    .contact-card a{color:var(--accent); font-weight:800; text-decoration:none}
+
+    footer{text-align:center;margin-top:22px;color:var(--muted);font-size:13px;padding-bottom:30px}
+
+    /* reveal */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1; transform:translateY(0)}
+
+    @media(max-width:640px){
+      .logo{width:46px;height:46px}
+      .hero h1{font-size:22px}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <div class="logo">KC</div>
+        <div class="brand-title">
+          <div class="name">Kalyan Chakravadhanula</div>
+          <div class="role muted">Aspiring Software Engineer</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certs">Certs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home" role="banner" aria-labelledby="hero-title">
+      <div class="hero-left">
+        <div class="kicker">Aspiring Software Engineer</div>
+        <h1 id="hero-title">Hi — I’m <strong>Kalyan Chakravadhanula</strong></h1>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+          <div class="hero-sub">Software Development • DSA • AI Fundamentals</div>
+          <div class="typing" id="typing"></div>
+        </div>
+        <p class="hero-sub" style="margin-top:14px; max-width:70ch">
+          Passionate about designing efficient systems and solving real-world problems through code.
+          Focused on mastering software development, algorithmic problem solving (DSA), and building scalable, reliable applications.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://github.com/kalyanchakravadhanula" target="_blank">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/sri-satya-sai-kalyan-chakravadhanula-aa6023235/" target="_blank">LinkedIn</a>
+          <a class="btn" href="https://leetcode.com/u/jcbxkoNttM/" target="_blank">LeetCode</a>
+          <a class="btn" href="mailto:kalyan.ch20official@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="profile card">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="avatar">KC</div>
+          <div>
+            <div class="profile-name">Kalyan Chakravadhanula</div>
+            <div class="profile-role">B.Tech IT — Anurag University</div>
+          </div>
+        </div>
+
+        <div style="margin-top:6px" class="muted">Quick Links</div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/sri-satya-sai-kalyan-chakravadhanula-aa6023235/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/kalyanchakravadhanula" target="_blank">GitHub</a>
+          <a href="https://leetcode.com/u/jcbxkoNttM/" target="_blank">LeetCode</a>
+        </div>
+
+        <div style="margin-top:12px" class="muted">Contact</div>
+        <div style="font-weight:800"><a href="mailto:kalyan.ch20official@gmail.com" style="color:var(--accent); text-decoration:none">kalyan.ch20official@gmail.com</a></div>
+
+        <div style="margin-top:12px" class="muted">Location</div>
+        <div style="font-weight:800">Hyderabad, Telangana, India</div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="block reveal">
+      <div class="grid-2">
+        <div>
+          <div class="section-title">About</div>
+          <p class="muted" style="margin-top:8px">
+            I’m a third-year B.Tech Information Technology student at Anurag University, Hyderabad.
+            I focus on <strong>software engineering</strong> with a strong interest in <strong>DSA</strong> and practical software development.
+          </p>
+
+          <p class="muted" style="margin-top:12px">
+            <strong>Current focus:</strong> Software development, algorithmic problem solving (DSA), writing production-ready Python code, modular architecture, and deployment basics.
+          </p>
+
+          <p class="muted" style="margin-top:12px">
+            <strong>What I build:</strong> Practical projects that strengthen coding fundamentals and engineering skills — including GUI tools and exam practice platforms.
+            I learn by building, testing, and iterating until solutions are robust and maintainable.
+          </p>
+        </div>
+
+        <div>
+          <div class="contact-card">
+            <div style="color:var(--muted)">Snapshot</div>
+            <div style="font-weight:800;margin-top:8px">B.Tech — Information Technology (2023–2027)</div>
+            <div style="color:var(--muted); margin-top:10px">Languages</div>
+            <div style="font-weight:700; margin-top:6px">English (Elementary), Hindi (Elementary), Telugu (Native)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="block reveal">
+      <div class="section-title">Skills & Proficiency</div>
+
+      <div style="display:flex; gap:22px; margin-top:12px; flex-wrap:wrap">
+        <div style="flex:1; min-width:300px">
+          <div class="muted">Top Skills (Top 10)</div>
+          <div class="skills-grid" style="margin-top:10px">
+            <div class="skill">Python</div>
+            <div class="skill">Data Structures & Algorithms</div>
+            <div class="skill">Software Development</div>
+            <div class="skill">Full-Stack Basics</div>
+            <div class="skill">Django</div>
+            <div class="skill">SQL / MySQL</div>
+            <div class="skill">Git & GitHub</div>
+            <div class="skill">Operating Systems</div>
+            <div class="skill">Computer Networks</div>
+            <div class="skill">Problem Solving</div>
+          </div>
+
+          <div style="margin-top:16px" class="muted">Software Development Skills</div>
+          <div class="skills-grid" style="margin-top:10px">
+            <div class="skill">OOP & Design Patterns</div>
+            <div class="skill">REST APIs</div>
+            <div class="skill">Debugging & Testing</div>
+            <div class="skill">CI / CD basics</div>
+            <div class="skill">Data Preprocessing</div>
+            <div class="skill">Model Evaluation</div>
+            <div class="skill">Clean Code</div>
+          </div>
+        </div>
+
+        <div style="width:360px">
+          <div class="muted">Proficiency</div>
+          <div class="proficiency">
+            <div class="pro-item"><div class="label">DSA</div><div class="pro-bar"><i style="width:78%"></i></div></div>
+            <div class="pro-item"><div class="label">Python</div><div class="pro-bar"><i style="width:88%"></i></div></div>
+            <div class="pro-item"><div class="label">Software Development</div><div class="pro-bar"><i style="width:70%"></i></div></div>
+            <div class="pro-item"><div class="label">Full-Stack</div><div class="pro-bar"><i style="width:54%"></i></div></div>
+            <div class="pro-item"><div class="label">AI Fundamentals</div><div class="pro-bar"><i style="width:45%"></i></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="block reveal">
+      <div class="section-title">Projects & Work</div>
+      <div class="muted" style="margin-top:8px">Currently working on personal projects to strengthen software development & DSA skills.</div>
+
+      <div class="projects-grid" style="margin-top:14px">
+        <article class="proj-card" aria-labelledby="p1">
+          <h3 id="p1">PyAssess — Python Exam Portal</h3>
+          <p class="muted">A full exam simulator built with Python & Tkinter that recreates coding test environments (timers, randomized questions, scoring, code execution sandbox). Designed to help practice coding & aptitude under exam conditions.</p>
+          <div class="proj-meta">Tech: Python · Tkinter · OOP</div>
+          <div style="margin-top:10px"><a href="https://github.com/kalyanchakravadhanula" target="_blank" class="btn">View on GitHub</a></div>
+        </article>
+
+        <article class="proj-card" aria-labelledby="p2">
+          <h3 id="p2">Multi-Topic MCQ Quiz App</h3>
+          <p class="muted">Interactive, category-based MCQ app in Python with auto-grading, result summary, and a clean GUI — built to practice different subjects (OS, CN, ML topics).</p>
+          <div class="proj-meta">Tech: Python · Tkinter · OOP</div>
+          <div style="margin-top:10px"><a href="https://github.com/kalyanchakravadhanula" target="_blank" class="btn">View on GitHub</a></div>
+        </article>
+
+        <article class="proj-card" aria-labelledby="p3">
+          <h3 id="p3">Portfolio — this site</h3>
+          <p class="muted">This single-file, responsive portfolio showcases projects, skills, certifications and contact information — designed for clarity and impact.</p>
+          <div class="proj-meta">Tech: HTML · CSS · JS</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs" class="block reveal">
+      <div class="section-title">Certifications & Achievements</div>
+      <div class="muted" style="margin-top:8px">Selected certifications and learning milestones.</div>
+      <div class="certs-grid" style="margin-top:12px">
+        <div class="cert">Career Essentials in Generative AI — Microsoft & LinkedIn</div>
+        <div class="cert">Microsoft Azure AI Essentials — Microsoft</div>
+        <div class="cert">Become a Django Developer — LinkedIn Learning</div>
+        <div class="cert">Python Hands-On Practice — LinkedIn</div>
+        <div class="cert">Java (Basic) — HackerRank</div>
+        <div class="cert">SQL (Basic) — HackerRank</div>
+        <div class="cert">Networking Basics — Cisco</div>
+        <div class="cert">Crash Course on Python — Coursera</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="block reveal">
+      <div class="section-title">Contact</div>
+      <div class="muted" style="margin-top:8px">Let's connect — I'm open to internships, collaborations, and learning opportunities.</div>
+
+      <div class="contact-row" style="margin-top:12px">
+        <div class="contact-card">
+          <div class="muted">Email</div>
+          <div style="font-weight:800;margin-top:8px"><a href="mailto:kalyan.ch20official@gmail.com" class="contact-link">kalyan.ch20official@gmail.com</a></div>
+        </div>
+
+        <div class="contact-card">
+          <div class="muted">LinkedIn</div>
+          <div style="font-weight:800;margin-top:8px"><a href="https://www.linkedin.com/in/sri-satya-sai-kalyan-chakravadhanula-aa6023235/" target="_blank" class="contact-link">Sri Satya Sai Kalyan</a></div>
+        </div>
+
+        <div class="contact-card">
+          <div class="muted">GitHub</div>
+          <div style="font-weight:800;margin-top:8px"><a href="https://github.com/kalyanchakravadhanula" target="_blank" class="contact-link">kalyanchakravadhanula</a></div>
+        </div>
+
+        <div class="contact-card">
+          <div class="muted">LeetCode</div>
+          <div style="font-weight:800;margin-top:8px"><a href="https://leetcode.com/u/jcbxkoNttM/" target="_blank" class="contact-link">LeetCode Profile</a></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2025 Kalyan Chakravadhanula — Designed & Built by Kalyan</div>
+      <div class="muted" style="margin-top:6px">Made with ♥ — HTML • CSS • JavaScript • Projects on GitHub</div>
+    </footer>
+
+  </div>
+
+  <script>
+    /* ---------- particle background ---------- */
+    (function(){
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+      const particles = [];
+      const count = Math.max(36, Math.floor((w*h)/100000));
+
+      function rand(min,max){ return Math.random()*(max-min)+min }
+      function create(){
+        for(let i=0;i<count;i++){
+          particles.push({
+            x: Math.random()*w,
+            y: Math.random()*h,
+            r: rand(0.6,2.2),
+            vx: rand(-0.3,0.5),
+            vy: rand(-0.12,0.28),
+            a: rand(0.05,0.22)
+          })
+        }
+      }
+      function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; particles.length=0; create() }
+      window.addEventListener('resize', resize);
+      create();
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        particles.forEach(p=>{
+          p.x += p.vx; p.y += p.vy;
+          if(p.x> w+10) p.x=-10;
+          if(p.x < -10) p.x=w+10;
+          if(p.y > h+10) p.y=-10;
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(155,123,255,'+p.a+')';
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* ---------- typing effect ---------- */
+    (function(){
+      const el = document.getElementById('typing');
+      const phrases = [
+        'Building robust software',
+        'Solving problems with DSA',
+        'Writing clean, production-ready code',
+        'Learning scalable system design'
+      ];
+      let i=0, j=0, forward=true, wait=1000;
+      function step(){
+        const cur = phrases[i];
+        if(forward){
+          j++; el.textContent = cur.slice(0,j);
+          if(j===cur.length){ forward=false; setTimeout(step, wait); return }
+        } else {
+          j--; el.textContent = cur.slice(0,j);
+          if(j===0){ forward=true; i=(i+1)%phrases.length; }
+        }
+        setTimeout(step, 45);
+      }
+      step();
+    })();
+
+    /* ---------- reveal on scroll ---------- */
+    (function(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){ en.target.classList.add('visible') }
+        })
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    })();
+
+    /* ---------- nav active ---------- */
+    (function(){
+      const nav = document.querySelectorAll('nav a');
+      const sections = ['about','skills','projects','certs','contact'];
+      function onScroll(){
+        const y = window.scrollY + 140;
+        sections.forEach(id=>{
+          const el = document.getElementById(id);
+          const a = document.querySelector('nav a[href="#'+id+'"]');
+          if(!el || !a) return;
+          if(y >= el.offsetTop && y < el.offsetTop + el.offsetHeight){
+            nav.forEach(n=>n.style.color='var(--muted)');
+            a.style.color = 'var(--accent)';
+          } else {
+            a.style.color = '';
+          }
+        });
+      }
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>
